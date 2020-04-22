@@ -1,0 +1,56 @@
+version: '3'
+services: 
+    postgres:
+        image: 'postgres:latest'
+        environment: 
+            - POSTGRES_PASSWORD=postgres_password
+    redis:
+        image: 'redis:latest'
+    nginx:
+        restart: always
+        build: 
+            dockerfile: Dockerfile.dev
+            context: ./nginx
+        ports: 
+            - '3050:80'
+        depends_on: 
+            - api
+            - client
+    api:
+        build: 
+            dockerfile: Dockerfile.dev
+            context: ./server # this tell use the src code inside server directory for building this image
+        volumes: 
+            - /app/node_modules
+            - ./server:/app
+        depends_on: 
+            - postgres
+        environment: # set the variables inside the container at run time.this variable are set only when container started
+                     # up.this information is not been encoded inside the image
+            - REDIS_HOST=redis
+            - REDIS_PORT=6379
+            - PGUSER=postgres
+            - PGHOST=postgres
+            - PGDATABASE=postgres
+            - PGPASSWORD=postgres_password
+            - PGPORT=5432
+    client:
+        stdin_open: true
+        build: 
+            dockerfile: Dockerfile.dev
+            context: ./client # this tell use the src code inside client directory for building this image
+        volumes: 
+            - /app/node_modules
+            - ./client:/app
+    worker:
+        build: 
+            dockerfile: Dockerfile.dev
+            context: ./worker # this tell use the src code inside worker directory for building this image
+        volumes: 
+            - /app/node_modules
+            - ./worker:/app
+        environment: 
+            - REDIS_HOST=redis
+            - REDIS_PORT=6379
+
+    

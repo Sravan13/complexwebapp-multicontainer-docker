@@ -7,3 +7,12 @@
 ![complezapp1](https://user-images.githubusercontent.com/5359534/80109281-ef08a380-859a-11ea-823e-e60b0413fb1b.PNG)
 
 ![complezapp3](https://user-images.githubusercontent.com/5359534/80109352-02b40a00-859b-11ea-8ae5-eb7e9dee58e3.PNG)
+
+The project directory have single docker instance then EBS understand based on that file it will deploy application
+![complezapp4](https://user-images.githubusercontent.com/5359534/80116055-20856d00-85a3-11ea-8ac6-c0cf973d344a.PNG)
+
+Here we have multiple docker files then EBS confuse which one to take  for that reason "Dockerrun.aws.json" comes
+![complezapp5](https://user-images.githubusercontent.com/5359534/80116058-21b69a00-85a3-11ea-9b8a-86760207857c.PNG)
+
+Dockerrun.aws.json this file tell the EBS where to pull the images from , what resources to be allocated to each one , how to setup the port mapping and some associated information.this file Dockerrun.aws.json resembles as docker-compose file .compose have how to build the image but Dockerrun.aws.json have from where image to be pulled from.
+![complezapp6](https://user-images.githubusercontent.com/5359534/80116061-224f3080-85a3-11ea-86a3-4aeab9d599d1.PNG)

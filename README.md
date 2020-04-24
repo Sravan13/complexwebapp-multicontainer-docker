@@ -22,3 +22,6 @@ EBS does not understand **Docker.aws.json** it is forward it Amazon Elastic  con
 ![complezapp8](https://user-images.githubusercontent.com/5359534/80223307-bda8da00-8665-11ea-98f1-5581d2ff30fd.PNG)
 
 ![complezapp9](https://user-images.githubusercontent.com/5359534/80223321-c26d8e00-8665-11ea-8412-51bb100bb3eb.PNG)
+
+Security group (Firewall rules ) tells what different sources of the internet can connect to different sources(instances) inside 
+the VPC

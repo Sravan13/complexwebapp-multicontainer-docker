@@ -3,9 +3,9 @@
     "containerDefinitions": [
         {
             "name" : "client",
-            "image" : "sravan13/multi-client", /*name of the image from the docker hub */
-            "hostname" : "client", /* other container identify this container with host name*/
-            "essential" : false /* If true then this container crashed then other contained should be stopped*/
+            "image" : "sravan13/multi-client", 
+            "hostname" : "client", 
+            "essential" : false 
         },
         {
             "name" : "server",
@@ -38,9 +38,3 @@
         
     ]
 }
-
-
-- docker build -t sravan13/multi-client ./client
-- docker build -t sravan13/multi-nginx  ./nginx
-- docker build -t sravan13/multi-server ./server
-- docker build -t sravan13/multi-worker ./worker
